@@ -1,0 +1,36 @@
+<h1 mat-dialog-title>Add new customer</h1>
+<form [formGroup]="customerForm" autocomplete="off" novalidate  
+    fxLayout="column wrap" fxLayoutAlign="center" fxLayoutGap="30px">
+        <div mat-dialog-content>
+            <mat-form-field>
+                <input matInput placeholder="First Name" required formControlName="firstName" id="firstName">
+                <mat-error *ngFor="let validation of validationMsg.firstName">
+                        <mat-error class="error-message" 
+                            *ngIf="customerForm.get('firstName').hasError(validation.type) && (customerForm.get('firstName').dirty || customerForm.get('firstName').touched)">
+                            {{validation.message}}
+                        </mat-error>    
+                </mat-error>
+            </mat-form-field>
+            <br/>
+            <br/>
+            <br/>
+            <mat-form-field>
+                    <input matInput  placeholder="Last Name" required formControlName="lastName" id="lastName">
+                    <mat-error *ngFor="let validation of validationMsg.lastName">
+                        <mat-error class="error-message" 
+                            *ngIf="customerForm.get('lastName').hasError(validation.type) && (customerForm.get('lastName').dirty || customerForm.get('lastName').touched)">
+                            {{validation.message}}
+                        </mat-error>
+                    </mat-error>
+                </mat-form-field>
+                <br/>
+                <br/>
+                <br/>
+        </div>
+    <br/>
+    <br/>
+    <div mat-dialog-actions>
+        <button mat-raised-button [mat-dialog-close]="data" color="primary" [disabled]="!customerForm.valid" (click)="onSubmit()">Submit</button>
+        <button type="button" mat-raised-button (click)="onCancel()" color="warn">Cancel</button>
+    </div>
+</form>
