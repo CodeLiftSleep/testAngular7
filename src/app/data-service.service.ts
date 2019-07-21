@@ -9,8 +9,8 @@ export class DataServiceService {
 
   customers: Customers[] = [
     {
-    firstName: 'Matt',
-    lastName: 'Osman'
+    firstName: 'Ushoud',
+    lastName: 'Hireme'
     },
     {firstName: 'Josh',
     lastName: 'Allen'}
