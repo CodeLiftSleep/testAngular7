@@ -36,9 +36,15 @@ export class CustomerDataTableComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result != null) {
         this.customerService.addCustomers(result);
-        this.table.renderRows();
+        // need to refresh the table rows
+        this.refresh();
       }
     });
+  }
+
+  // refreshes the table rows
+  refresh() {
+    this.table.renderRows();
   }
   // subscribe to the dataService to connect to the customer list.
   ngOnInit() {
