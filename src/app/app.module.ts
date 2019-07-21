@@ -29,11 +29,6 @@ import {MatFormFieldModule, MatButtonModule, MatInputModule } from '@angular/mat
     MatInputModule,
     BrowserAnimationsModule
   ],
-  /*providers: [
-    MatDialogRef,
-    {provide: MAT_DIALOG_DATA, useValue: {}}
-  ],*/
-
   bootstrap: [AppComponent],
   entryComponents: [AddCustomerModalComponent]
 })
