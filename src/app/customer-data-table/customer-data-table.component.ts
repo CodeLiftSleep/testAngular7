@@ -29,12 +29,11 @@ export class CustomerDataTableComponent implements OnInit {
 // this handles the dialog open/close events
   openDialog(): void {
     const dialogRef = this.dialog.open(AddCustomerModalComponent, {
-      width: '50%',
+      width: '30%',
       data: {firstName: this.firstName, lastName: this.lastName}
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('the dialog was closed');
       if (result != null) {
         this.customerService.addCustomers(result);
         this.table.renderRows();

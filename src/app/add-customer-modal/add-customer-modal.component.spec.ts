@@ -16,7 +16,7 @@ describe('AddCustomerModalComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ AddCustomerModalComponent ],
-      imports: [ReactiveFormsModule, MatTableModule, MatFormFieldModule, CdkTableModule, MatDialogModule, NoopAnimationsModule, 
+      imports: [ReactiveFormsModule, MatTableModule, MatFormFieldModule, CdkTableModule, MatDialogModule, NoopAnimationsModule,
         MatInputModule],
       providers: [
         {provide: MatDialogRef, useValue: {}},
