@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatTable} from '@angular/material';
 import {DataServiceService} from '../data-service.service';
-import {Customers} from '../ICustomer';
+import {ICustomer} from '../interfaces/ICustomer';
 import {MatDialog} from '@angular/material/dialog';
 import { AddCustomerModalComponent } from '../add-customer-modal/add-customer-modal.component';
 
@@ -10,15 +10,15 @@ import { AddCustomerModalComponent } from '../add-customer-modal/add-customer-mo
   templateUrl: './customer-data-table.component.html',
   styleUrls: ['./customer-data-table.component.css']
 })
-export class CustomerDataTableComponent implements OnInit {
+export class CustomerDataTableComponent implements OnInit, ICustomer {
 
   displayedColumns: string[] = ['firstName', 'lastName'];
-  dataSource: Customers[] = [];
+  dataSource: ICustomer[] = [];
 
   firstName: string;
   lastName: string;
 
-  // needed to update the data in the table after adding
+  // needed to update the data in the table after adding new customers
   @ViewChild(MatTable, {static: false}) table: MatTable<any>;
 
   constructor(private customerService: DataServiceService, public dialog: MatDialog) { }
@@ -41,16 +41,16 @@ export class CustomerDataTableComponent implements OnInit {
       }
     });
   }
-
   // refreshes the table rows
   refresh() {
     this.table.renderRows();
   }
+
   // subscribe to the dataService to connect to the customer list.
   ngOnInit() {
     const customersObservable = this.customerService.getCustomers();
-    customersObservable.subscribe((customersData: Customers[]) => {
+    customersObservable.subscribe((customersData: ICustomer[]) => {
       this.dataSource = customersData;
     });
-    }
+  }
 }

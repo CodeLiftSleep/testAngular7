@@ -1,8 +1,8 @@
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Component, Inject, OnInit, Output, EventEmitter, Optional } from '@angular/core';
-import {Customers} from '../ICustomer';
+import {ICustomer} from '../interfaces/ICustomer';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import {validationMessages} from '../validation';
+import {validationMessages} from './validation';
 
 
 @Component({
@@ -30,7 +30,7 @@ export class AddCustomerModalComponent implements OnInit {
   }
 
   constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<AddCustomerModalComponent>,
-              @Optional() @Inject(MAT_DIALOG_DATA) data: Customers) { }
+              @Optional() @Inject(MAT_DIALOG_DATA) data: ICustomer) { }
 
 
   onSubmit(): void {

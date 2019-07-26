@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Observable} from 'rxjs';
-import {Customers} from './ICustomer';
+import {ICustomer} from './interfaces/ICustomer';
+import {IDataService} from './interfaces/IDataService';
 
 @Injectable({
   providedIn: 'root'
 })
-export class DataServiceService {
 
-  customers: Customers[] = [
+export class DataServiceService implements IDataService {
+
+  customers: ICustomer[] = [
     {
     firstName: 'Ushoud',
     lastName: 'Hireme'
@@ -26,7 +28,7 @@ public getCustomers(): any {
   return customersObservable;
 }
 // add customers to the customer array
-public addCustomers(data: Customers): any {
+public addCustomers(data: ICustomer): any {
   this.customers.push(data);
 }
 constructor() {}
